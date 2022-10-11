@@ -139,7 +139,7 @@ MyText.styles = [
       }
     `,
     css `
-      .input:empty:before {
+      .main-input:empty:before {
         content: attr(placeholder);
         -webkit-text-fill-color: rgba(55, 53, 47, 0.5);
       }
