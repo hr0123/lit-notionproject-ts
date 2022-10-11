@@ -7,6 +7,9 @@
 import {LitElement, html, css} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 
+import './my-title';
+import './my-main';
+
 /**
  * An example element.
  *
@@ -17,11 +20,18 @@ import {customElement, property} from 'lit/decorators.js';
 @customElement('my-element')
 export class MyElement extends LitElement {
   static override styles = css`
-    :host {
-      display: block;
-      border: solid 1px gray;
-      padding: 16px;
-      max-width: 800px;
+    /* :host { */
+    * {
+      /* display: block; */
+      /* border: solid 1px gray; */
+      /* padding: 16px; */
+      /* max-width: 800px; */
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
   `;
 
@@ -39,11 +49,13 @@ export class MyElement extends LitElement {
 
   override render() {
     return html`
-      <h1>${this.sayHello(this.name)}!</h1>
+      <!-- <h1>${this.sayHello(this.name)}!</h1>
       <button @click=${this._onClick} part="button">
         Click Count: ${this.count}
       </button>
-      <slot></slot>
+      <slot></slot> -->
+      <my-title></my-title>
+      <my-main></my-main>
     `;
   }
 
