@@ -54,7 +54,9 @@ let MyMenu = class MyMenu extends LitElement {
       <div class="wrapper">
         <div class="container">
           <div class="header">BASIC BLOCKS</div>
-          ${this.menuItems.map((item) => html ` <div class="block" @click=${this._onClickMenu}>
+          ${this.menuItems.map((item) => 
+        // html` <div class="block" @click=${this._onClickMenu(${item.type})}>
+        html ` <div class="block" @click=${this._onClickMenu}>
                 <img class="icon" src=${item.img} />
                 <div class="content">
                   <div class="content-type">${item.type}</div>
@@ -65,8 +67,16 @@ let MyMenu = class MyMenu extends LitElement {
       </div>
     `;
     }
-    _onClickMenu() {
+    _onClickMenu(selectedMenu) {
         console.log('MENU CLICKED!!');
+        const input = document.getElementsByClassName('main-input');
+        input[0].removeAttribute('class');
+        switch (selectedMenu) {
+            case this.menuItems[0].type: {
+                // input[0].setAttribute('class', `${this.}`)  }
+                // 선택한 메뉴 타입별 스타일클래스 적용
+            }
+        }
     }
 };
 MyMenu.styles = [

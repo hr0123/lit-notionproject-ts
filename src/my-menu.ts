@@ -150,6 +150,7 @@ export class MyMenu extends LitElement {
           <div class="header">BASIC BLOCKS</div>
           ${this.menuItems.map(
             (item) =>
+              // html` <div class="block" @click=${this._onClickMenu(${item.type})}>
               html` <div class="block" @click=${this._onClickMenu}>
                 <img class="icon" src=${item.img} />
                 <div class="content">
@@ -163,8 +164,16 @@ export class MyMenu extends LitElement {
     `;
   }
 
-  private _onClickMenu() {
+  private _onClickMenu(selectedMenu: unknown) {
     console.log('MENU CLICKED!!');
+    const input = document.getElementsByClassName('main-input');
+    input[0].removeAttribute('class');
+    switch (selectedMenu) {
+      case this.menuItems[0].type: {
+        // input[0].setAttribute('class', `${this.}`)  }
+        // 선택한 메뉴 타입별 스타일클래스 적용
+      }
+    }
   }
 }
 

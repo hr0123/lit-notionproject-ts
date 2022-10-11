@@ -52,7 +52,7 @@ export class MyText extends LitElement {
       }
     `,
     css`
-      .input {
+      .main-input {
         width: 100%;
         height: auto;
         /* padding: 0.5rem 0.5rem; */
@@ -90,7 +90,7 @@ export class MyText extends LitElement {
             ?hidden=${!this.open}
           />
           <div
-            class="input"
+            class="main-input"
             contenteditable="true"
             placeholder="Type '/' for commands"
             @mouseover=${this._onMouseOver}
