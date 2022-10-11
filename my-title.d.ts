@@ -13,6 +13,7 @@ import { LitElement } from 'lit';
  */
 export declare class MyTitle extends LitElement {
     static styles: import("lit").CSSResult[];
+    open: boolean;
     render(): import("lit-html").TemplateResult<1>;
     private _onMouseOver;
 }

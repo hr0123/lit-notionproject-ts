@@ -5,7 +5,7 @@
  */
 
 import {LitElement, html, css} from 'lit';
-import {customElement} from 'lit/decorators.js';
+import {customElement, property} from 'lit/decorators.js';
 
 /**
  * An example element.
@@ -64,33 +64,40 @@ export class MyTitle extends LitElement {
       }
     `,
     css`
-      .input:empty:not(:focus):before {
+      .input:empty:before {
         content: attr(placeholder);
         -webkit-text-fill-color: rgba(55, 53, 47, 0.15);
       }
     `,
   ];
 
+  @property({type: Boolean})
+  open = false;
+
   override render() {
     return html`
       <div class="wrapper">
         <div class="button-block">
-          <div class="button">Add icon</div>
-          <div class="button">Add cover</div>
-          <div class="button">Add comment</div>
+          <div class="button" ?hidden=${!this.open}>Add icon</div>
+          <div class="button" ?hidden=${!this.open}>Add cover</div>
+          <div class="button" ?hidden=${!this.open}>Add comment</div>
         </div>
         <div
           class="input"
           contenteditable="true"
           placeholder="Untitled"
           @mouseover=${this._onMouseOver}
+          @mouseout=${this._onMouseOver}
         ></div>
       </div>
     `;
   }
 
-  private _onMouseOver() {
-    // this.
+  private async _onMouseOver() {
+    this.open = !this.open;
+    await this.updateComplete;
+    const name = this.open ? 'opened' : 'closed';
+    this.dispatchEvent(new CustomEvent(name, {bubbles: true, composed: true}));
   }
 }
 

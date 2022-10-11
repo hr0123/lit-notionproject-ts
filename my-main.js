@@ -10,7 +10,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { LitElement, html, css } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 /**
  * An example element.
  *
@@ -19,6 +19,10 @@ import { customElement } from 'lit/decorators.js';
  * @csspart button - The button
  */
 let MyMain = class MyMain extends LitElement {
+    constructor() {
+        super(...arguments);
+        this.open = false;
+    }
     render() {
         return html `
       <div class="wrapper">
@@ -26,26 +30,24 @@ let MyMain = class MyMain extends LitElement {
           <img
             class="drag-icon"
             src="https://img.icons8.com/windows/96/000000/braille.png"
+            ?hidden=${!this.open}
           />
           <div
             class="input"
             contenteditable="true"
             placeholder="Type '/' for commands"
-          ></div>
-        </div>
-        <div class="block">
-          <img
-            class="drag-icon"
-            src="https://img.icons8.com/windows/96/000000/braille.png"
-          />
-          <div
-            class="input"
-            contenteditable="true"
-            placeholder="Type '/' for commands"
+            @mouseover=${this._onMouseOver}
+            @mouseout=${this._onMouseOver}
           ></div>
         </div>
       </div>
     `;
+    }
+    async _onMouseOver() {
+        this.open = !this.open;
+        await this.updateComplete;
+        const name = this.open ? 'opened' : 'closed';
+        this.dispatchEvent(new CustomEvent(name, { bubbles: true, composed: true }));
     }
 };
 MyMain.styles = [
@@ -75,8 +77,9 @@ MyMain.styles = [
         width: 20px;
         height: 20px;
         cursor: pointer;
-        /* position: relative;
-        right: 17px;
+        position: absolute;
+        /* padding-left: 10px; */
+        /* right: 17px;
         bottom: 26px; */
       }
     `,
@@ -84,7 +87,8 @@ MyMain.styles = [
       .input {
         width: 100%;
         height: auto;
-        padding: 0.5rem 0.5rem;
+        /* padding: 0.5rem 0.5rem; */
+        padding: 0.5rem 1.5rem;
         font-size: 1rem;
         font-weight: 500;
         border: 0;
@@ -93,15 +97,19 @@ MyMain.styles = [
         white-space: pre-wrap;
         color: rgb(55, 53, 47);
         outline: none;
+        cursor: text;
       }
     `,
     css `
-      .input:empty:not(:focus):before {
+      .input:empty:before {
         content: attr(placeholder);
         -webkit-text-fill-color: rgba(55, 53, 47, 0.5);
       }
     `,
 ];
+__decorate([
+    property({ type: Boolean })
+], MyMain.prototype, "open", void 0);
 MyMain = __decorate([
     customElement('my-main')
 ], MyMain);
