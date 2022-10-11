@@ -54,7 +54,7 @@ let MyMenu = class MyMenu extends LitElement {
       <div class="wrapper">
         <div class="container">
           <div class="header">BASIC BLOCKS</div>
-          ${this.menuItems.map((item) => html ` <div class="block">
+          ${this.menuItems.map((item) => html ` <div class="block" @click=${this._onClickMenu}>
                 <img class="icon" src=${item.img} />
                 <div class="content">
                   <div class="content-type">${item.type}</div>
@@ -64,6 +64,9 @@ let MyMenu = class MyMenu extends LitElement {
         </div>
       </div>
     `;
+    }
+    _onClickMenu() {
+        console.log('MENU CLICKED!!');
     }
 };
 MyMenu.styles = [

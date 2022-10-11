@@ -19,6 +19,7 @@ export declare class MyMenu extends LitElement {
         img: string;
     }[];
     render(): import("lit-html").TemplateResult<1>;
+    private _onClickMenu;
 }
 declare global {
     interface HTMLElementTagNameMap {

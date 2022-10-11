@@ -150,7 +150,7 @@ export class MyMenu extends LitElement {
           <div class="header">BASIC BLOCKS</div>
           ${this.menuItems.map(
             (item) =>
-              html` <div class="block">
+              html` <div class="block" @click=${this._onClickMenu}>
                 <img class="icon" src=${item.img} />
                 <div class="content">
                   <div class="content-type">${item.type}</div>
@@ -161,6 +161,10 @@ export class MyMenu extends LitElement {
         </div>
       </div>
     `;
+  }
+
+  private _onClickMenu() {
+    console.log('MENU CLICKED!!');
   }
 }
 
