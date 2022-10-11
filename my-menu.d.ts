@@ -4,7 +4,6 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 import { LitElement } from 'lit';
-import './my-menu';
 /**
  * An example element.
  *
@@ -12,16 +11,18 @@ import './my-menu';
  * @slot - This element has a slot
  * @csspart button - The button
  */
-export declare class MyText extends LitElement {
+export declare class MyMenu extends LitElement {
     static styles: import("lit").CSSResult[];
-    open: boolean;
+    menuItems: {
+        type: string;
+        summary: string;
+        img: string;
+    }[];
     render(): import("lit-html").TemplateResult<1>;
-    private _onMouseOver;
-    private _onKeyDown;
 }
 declare global {
     interface HTMLElementTagNameMap {
-        'my-text': MyText;
+        'my-menu': MyMenu;
     }
 }
-//# sourceMappingURL=my-text.d.ts.map
+//# sourceMappingURL=my-menu.d.ts.map

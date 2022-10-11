@@ -11,6 +11,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import './my-menu';
 /**
  * An example element.
  *
@@ -41,6 +42,7 @@ let MyText = class MyText extends LitElement {
             @keydown=${this._onKeyDown}
           ></div>
         </div>
+        <my-menu></my-menu>
       </div>
     `;
     }
@@ -53,6 +55,23 @@ let MyText = class MyText extends LitElement {
     _onKeyDown(e) {
         if (e.key === 'Enter') {
             console.log(e);
+            const newBlock = document.createElement('div');
+            newBlock.setAttribute('class', 'block');
+            const newIcon = document.createElement('img');
+            newIcon.setAttribute('class', 'drag-icon');
+            newIcon.setAttribute('src', 'https://img.icons8.com/windows/96/000000/braille.png');
+            // newIcon.setAttribute('?hidden', `${!this.open}`);
+            const newInput = document.createElement('div');
+            newInput.setAttribute('class', 'input');
+            newInput.setAttribute('contenteditable', 'true');
+            newInput.setAttribute('placeholder', "Type '/' for commands");
+            // newInput.setAttribute('@mouseover', `${this._onMouseOver}`);
+            // newInput.setAttribute('@mouseout', `${this._onMouseOver}`);
+            // newInput.setAttribute('@keydown', `${this._onKeyDown}`);
+            newBlock.appendChild(newIcon);
+            newBlock.appendChild(newInput);
+            const wrapper = document.getElementsByClassName('.wrapper');
+            wrapper[0].appendChild(newBlock);
         }
     }
 };
