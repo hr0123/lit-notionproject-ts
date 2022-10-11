@@ -16,6 +16,7 @@ export declare class MyMain extends LitElement {
     open: boolean;
     render(): import("lit-html").TemplateResult<1>;
     private _onMouseOver;
+    private _onKeyDown;
 }
 declare global {
     interface HTMLElementTagNameMap {

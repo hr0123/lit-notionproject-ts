@@ -77,7 +77,7 @@ export class MyTitle extends LitElement {
   override render() {
     return html`
       <div class="wrapper">
-        <div class="button-block">
+        <div class="button-block" ?hidden=${!this.open}>
           <div class="button" ?hidden=${!this.open}>Add icon</div>
           <div class="button" ?hidden=${!this.open}>Add cover</div>
           <div class="button" ?hidden=${!this.open}>Add comment</div>

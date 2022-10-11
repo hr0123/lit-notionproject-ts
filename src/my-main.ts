@@ -92,6 +92,7 @@ export class MyMain extends LitElement {
             placeholder="Type '/' for commands"
             @mouseover=${this._onMouseOver}
             @mouseout=${this._onMouseOver}
+            @keydown=${this._onKeyDown}
           ></div>
         </div>
       </div>
@@ -103,6 +104,12 @@ export class MyMain extends LitElement {
     await this.updateComplete;
     const name = this.open ? 'opened' : 'closed';
     this.dispatchEvent(new CustomEvent(name, {bubbles: true, composed: true}));
+  }
+
+  private _onKeyDown(e: Event) {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      console.log(e);
+    }
   }
 }
 
