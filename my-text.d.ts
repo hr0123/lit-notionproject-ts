@@ -15,9 +15,11 @@ import './my-menu';
 export declare class MyText extends LitElement {
     static styles: import("lit").CSSResult[];
     open: boolean;
+    menuOpen: boolean;
     render(): import("lit-html").TemplateResult<1>;
     private _onMouseOver;
-    private _onKeyDown;
+    private _onKeyEnter;
+    private _onKeySlash;
 }
 declare global {
     interface HTMLElementTagNameMap {

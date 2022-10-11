@@ -23,6 +23,7 @@ let MyText = class MyText extends LitElement {
     constructor() {
         super(...arguments);
         this.open = false;
+        this.menuOpen = false;
     }
     render() {
         return html `
@@ -39,10 +40,11 @@ let MyText = class MyText extends LitElement {
             placeholder="Type '/' for commands"
             @mouseover=${this._onMouseOver}
             @mouseout=${this._onMouseOver}
-            @keydown=${this._onKeyDown}
+            @keypress=${this._onKeyEnter}
+            @keydown=${this._onKeySlash}
           ></div>
         </div>
-        <my-menu></my-menu>
+        <my-menu ?hidden=${!this.menuOpen}></my-menu>
       </div>
     `;
     }
@@ -52,7 +54,7 @@ let MyText = class MyText extends LitElement {
         const name = this.open ? 'opened' : 'closed';
         this.dispatchEvent(new CustomEvent(name, { bubbles: true, composed: true }));
     }
-    _onKeyDown(e) {
+    _onKeyEnter(e) {
         if (e.key === 'Enter') {
             console.log(e);
             const newBlock = document.createElement('div');
@@ -60,18 +62,29 @@ let MyText = class MyText extends LitElement {
             const newIcon = document.createElement('img');
             newIcon.setAttribute('class', 'drag-icon');
             newIcon.setAttribute('src', 'https://img.icons8.com/windows/96/000000/braille.png');
-            // newIcon.setAttribute('?hidden', `${!this.open}`);
+            newIcon.setAttribute('?hidden', `${!this.open}`);
             const newInput = document.createElement('div');
             newInput.setAttribute('class', 'input');
             newInput.setAttribute('contenteditable', 'true');
             newInput.setAttribute('placeholder', "Type '/' for commands");
-            // newInput.setAttribute('@mouseover', `${this._onMouseOver}`);
-            // newInput.setAttribute('@mouseout', `${this._onMouseOver}`);
-            // newInput.setAttribute('@keydown', `${this._onKeyDown}`);
+            newInput.setAttribute('@mouseover', `${this._onMouseOver}`);
+            newInput.setAttribute('@mouseout', `${this._onMouseOver}`);
+            newInput.setAttribute('@keydown', `${this._onKeyEnter}`);
+            newInput.setAttribute('@keypress', `${this._onKeySlash}`);
             newBlock.appendChild(newIcon);
             newBlock.appendChild(newInput);
             const wrapper = document.getElementsByClassName('.wrapper');
             wrapper[0].appendChild(newBlock);
+        }
+    }
+    _onKeySlash(e) {
+        if (e.key === '/') {
+            this.menuOpen = !this.menuOpen;
+            console.log(this.menuOpen);
+        }
+        else {
+            this.menuOpen = !this.menuOpen;
+            console.log(this.menuOpen);
         }
     }
 };
