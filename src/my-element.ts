@@ -8,7 +8,7 @@ import {LitElement, html, css} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 
 import './my-title';
-import './my-main';
+import './my-text';
 
 /**
  * An example element.
@@ -55,7 +55,7 @@ export class MyElement extends LitElement {
       </button>
       <slot></slot> -->
       <my-title></my-title>
-      <my-main></my-main>
+      <my-text></my-text>
     `;
   }
 

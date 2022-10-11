@@ -117,7 +117,7 @@ __decorate([
     property({ type: Boolean })
 ], MyText.prototype, "open", void 0);
 MyText = __decorate([
-    customElement('my-main')
+    customElement('my-text')
 ], MyText);
 export { MyText };
-//# sourceMappingURL=my-main.js.map
+//# sourceMappingURL=my-text.js.map

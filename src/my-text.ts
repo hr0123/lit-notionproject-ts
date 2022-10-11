@@ -14,8 +14,8 @@ import {customElement, property} from 'lit/decorators.js';
  * @slot - This element has a slot
  * @csspart button - The button
  */
-@customElement('my-main')
-export class MyMain extends LitElement {
+@customElement('my-text')
+export class MyText extends LitElement {
   static override styles = [
     css`
       .wrapper {
@@ -115,6 +115,6 @@ export class MyMain extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'my-main': MyMain;
+    'my-text': MyText;
   }
 }

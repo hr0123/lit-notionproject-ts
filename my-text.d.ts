@@ -23,4 +23,4 @@ declare global {
         'my-text': MyText;
     }
 }
-//# sourceMappingURL=my-main.d.ts.map
+//# sourceMappingURL=my-text.d.ts.map
