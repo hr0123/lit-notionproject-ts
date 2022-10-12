@@ -78,15 +78,12 @@ let MyText = class MyText extends LitElement {
         }
     }
     _onKeySlash(e) {
-        console.log(e);
         // if ((e as InputEvent).data === '/') {
         if (e.key === '/') {
-            this.menuOpen = !this.menuOpen;
-            console.log(this.menuOpen);
+            this.menuOpen = true;
         }
         else {
-            this.menuOpen = !this.menuOpen;
-            console.log(this.menuOpen);
+            this.menuOpen = false;
         }
     }
 };

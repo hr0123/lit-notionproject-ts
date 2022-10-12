@@ -141,14 +141,11 @@ export class MyText extends LitElement {
   }
 
   private _onKeySlash(e: Event) {
-    console.log(e);
     // if ((e as InputEvent).data === '/') {
     if ((e as KeyboardEvent).key === '/') {
-      this.menuOpen = !this.menuOpen;
-      console.log(this.menuOpen);
+      this.menuOpen = true;
     } else {
-      this.menuOpen = !this.menuOpen;
-      console.log(this.menuOpen);
+      this.menuOpen = false;
     }
   }
 }
