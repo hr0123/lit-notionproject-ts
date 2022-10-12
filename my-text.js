@@ -40,8 +40,8 @@ let MyText = class MyText extends LitElement {
             placeholder="Type '/' for commands"
             @mouseover=${this._onMouseOver}
             @mouseout=${this._onMouseOver}
-            @keypress=${this._onKeyEnter}
             @keydown=${this._onKeySlash}
+            @keypress=${this._onKeyEnter}
           ></div>
         </div>
         <my-menu id="menuImport" ?hidden=${!this.menuOpen}></my-menu>
@@ -54,9 +54,18 @@ let MyText = class MyText extends LitElement {
         const name = this.open ? 'opened' : 'closed';
         this.dispatchEvent(new CustomEvent(name, { bubbles: true, composed: true }));
     }
+    _onKeySlash(e) {
+        // if ((e as InputEvent).data === '/') {
+        if (e.key === '/') {
+            this.menuOpen = true;
+        }
+        else {
+            this.menuOpen = false;
+        }
+    }
     _onKeyEnter(e) {
         if (e.key === 'Enter') {
-            console.log(e);
+            console.log('ENTER!', e);
             const newBlock = document.createElement('div');
             newBlock.setAttribute('class', 'block');
             const newIcon = document.createElement('img');
@@ -69,21 +78,12 @@ let MyText = class MyText extends LitElement {
             newInput.setAttribute('placeholder', "Type '/' for commands");
             newInput.setAttribute('@mouseover', `${this._onMouseOver}`);
             newInput.setAttribute('@mouseout', `${this._onMouseOver}`);
-            newInput.setAttribute('@keydown', `${this._onKeyEnter}`);
-            newInput.setAttribute('@keypress', `${this._onKeySlash}`);
+            newInput.setAttribute('@keydown', `${this._onKeySlash}`);
+            newInput.setAttribute('@keypress', `${this._onKeyEnter}`);
             newBlock.appendChild(newIcon);
             newBlock.appendChild(newInput);
             const wrapper = document.getElementsByClassName('.wrapper');
             wrapper[0].appendChild(newBlock);
-        }
-    }
-    _onKeySlash(e) {
-        // if ((e as InputEvent).data === '/') {
-        if (e.key === '/') {
-            this.menuOpen = true;
-        }
-        else {
-            this.menuOpen = false;
         }
     }
 };

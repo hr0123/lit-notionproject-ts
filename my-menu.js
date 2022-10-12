@@ -24,6 +24,7 @@ let MyMenu = class MyMenu extends LitElement {
         this.menuItems = [
             {
                 type: 'Text',
+                placeholder: "Type '/' for commands",
                 summary: 'Just start writing with plain text.',
                 img: 'https://www.notion.so/images/blocks/text/en-US.png',
                 style: 'font-size: 16px; color: rgb(12, 11, 10)',
@@ -48,6 +49,7 @@ let MyMenu = class MyMenu extends LitElement {
             },
             {
                 type: 'Bulleted list',
+                placeholder: 'List',
                 summary: 'Create a simple bulleted list.',
                 img: 'https://www.notion.so/images/blocks/bulleted-list.0e87e917.png',
                 style: 'display: list-item; margin-left: 1em; color: rgb(12, 11, 10); margin-left: 40px',
@@ -77,7 +79,7 @@ let MyMenu = class MyMenu extends LitElement {
         mainInput[0].innerHTML = '';
         switch (index) {
             case 0: {
-                mainInput[0].setAttribute('placeholder', `${this.menuItems[0].type}`);
+                mainInput[0].setAttribute('placeholder', `${this.menuItems[0].placeholder}`);
                 mainInput[0].setAttribute('style', `${this.menuItems[0].style}`);
                 break;
             }
@@ -97,7 +99,7 @@ let MyMenu = class MyMenu extends LitElement {
                 break;
             }
             case 4: {
-                mainInput[0].setAttribute('placeholder', `${this.menuItems[4].type}`);
+                mainInput[0].setAttribute('placeholder', `${this.menuItems[4].placeholder}`);
                 mainInput[0].setAttribute('style', `${this.menuItems[4].style}`);
                 break;
             }

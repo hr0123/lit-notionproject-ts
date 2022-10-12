@@ -18,8 +18,8 @@ export declare class MyText extends LitElement {
     menuOpen: boolean;
     render(): import("lit-html").TemplateResult<1>;
     private _onMouseOver;
-    private _onKeyEnter;
     private _onKeySlash;
+    private _onKeyEnter;
 }
 declare global {
     interface HTMLElementTagNameMap {

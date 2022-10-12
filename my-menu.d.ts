@@ -13,12 +13,19 @@ import { LitElement } from 'lit';
  */
 export declare class MyMenu extends LitElement {
     static styles: import("lit").CSSResult[];
-    menuItems: {
+    menuItems: ({
+        type: string;
+        placeholder: string;
+        summary: string;
+        img: string;
+        style: string;
+    } | {
         type: string;
         summary: string;
         img: string;
         style: string;
-    }[];
+        placeholder?: undefined;
+    })[];
     render(): import("lit-html").TemplateResult<1>;
     private _onClickMenu;
 }
