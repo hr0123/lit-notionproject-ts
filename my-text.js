@@ -44,7 +44,7 @@ let MyText = class MyText extends LitElement {
             @keydown=${this._onKeySlash}
           ></div>
         </div>
-        <my-menu ?hidden=${!this.menuOpen}></my-menu>
+        <my-menu id="menuImport" ?hidden=${!this.menuOpen}></my-menu>
       </div>
     `;
     }
@@ -78,6 +78,8 @@ let MyText = class MyText extends LitElement {
         }
     }
     _onKeySlash(e) {
+        console.log(e);
+        // if ((e as InputEvent).data === '/') {
         if (e.key === '/') {
             this.menuOpen = !this.menuOpen;
             console.log(this.menuOpen);
@@ -148,6 +150,9 @@ MyText.styles = [
 __decorate([
     property({ type: Boolean })
 ], MyText.prototype, "open", void 0);
+__decorate([
+    property({ type: Boolean })
+], MyText.prototype, "menuOpen", void 0);
 MyText = __decorate([
     customElement('my-text')
 ], MyText);

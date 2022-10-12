@@ -78,6 +78,8 @@ export class MyText extends LitElement {
 
   @property({type: Boolean})
   open = false;
+
+  @property({type: Boolean})
   menuOpen = false;
 
   override render() {
@@ -99,7 +101,7 @@ export class MyText extends LitElement {
             @keydown=${this._onKeySlash}
           ></div>
         </div>
-        <my-menu ?hidden=${!this.menuOpen}></my-menu>
+        <my-menu id="menuImport" ?hidden=${!this.menuOpen}></my-menu>
       </div>
     `;
   }
@@ -139,6 +141,8 @@ export class MyText extends LitElement {
   }
 
   private _onKeySlash(e: Event) {
+    console.log(e);
+    // if ((e as InputEvent).data === '/') {
     if ((e as KeyboardEvent).key === '/') {
       this.menuOpen = !this.menuOpen;
       console.log(this.menuOpen);

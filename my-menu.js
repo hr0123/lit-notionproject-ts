@@ -73,35 +73,30 @@ let MyMenu = class MyMenu extends LitElement {
     _onClickMenu(index) {
         var _a;
         const mainInput = ((_a = this.parentElement) === null || _a === void 0 ? void 0 : _a.getElementsByClassName('main-input')) || undefined;
-        console.log(mainInput);
+        // console.log(mainInput);
         mainInput[0].innerHTML = '';
         switch (index) {
             case 0: {
-                console.log('TEXT CLICKED!!');
                 mainInput[0].setAttribute('placeholder', `${this.menuItems[0].type}`);
                 mainInput[0].setAttribute('style', `${this.menuItems[0].style}`);
                 break;
             }
             case 1: {
-                console.log('HEAD ONE CLICKED!!');
                 mainInput[0].setAttribute('placeholder', `${this.menuItems[1].type}`);
                 mainInput[0].setAttribute('style', `${this.menuItems[1].style}`);
                 break;
             }
             case 2: {
-                console.log('HEAD TWO CLICKED!!');
                 mainInput[0].setAttribute('placeholder', `${this.menuItems[2].type}`);
                 mainInput[0].setAttribute('style', `${this.menuItems[2].style}`);
                 break;
             }
             case 3: {
-                console.log('HEAD THREE CLICKED!!');
                 mainInput[0].setAttribute('placeholder', `${this.menuItems[3].type}`);
                 mainInput[0].setAttribute('style', `${this.menuItems[3].style}`);
                 break;
             }
             case 4: {
-                console.log('BULLET LIST CLICKED!!');
                 mainInput[0].setAttribute('placeholder', `${this.menuItems[4].type}`);
                 mainInput[0].setAttribute('style', `${this.menuItems[4].style}`);
                 break;
