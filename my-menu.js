@@ -26,26 +26,31 @@ let MyMenu = class MyMenu extends LitElement {
                 type: 'Text',
                 summary: 'Just start writing with plain text.',
                 img: 'https://www.notion.so/images/blocks/text/en-US.png',
+                style: 'font-size: 16px; color: rgb(12, 11, 10)',
             },
             {
                 type: 'Heading 1',
                 summary: 'Big section heading.',
                 img: 'https://www.notion.so/images/blocks/header.57a7576a.png',
+                style: 'font-size: 30px; font-weight: 700; color: black',
             },
             {
                 type: 'Heading 2',
                 summary: 'Medium section heading.',
                 img: 'https://www.notion.so/images/blocks/subheader.9aab4769.png',
+                style: 'font-size: 26px; font-weight: 700; color: rgb(12, 11, 10)',
             },
             {
                 type: 'Heading 3',
                 summary: 'Small section heading.',
                 img: 'https://www.notion.so/images/blocks/subsubheader.d0ed0bb3.png',
+                style: 'font-size: 20px; font-weight: 700; color: rgb(12, 11, 10)',
             },
             {
                 type: 'Bulleted list',
                 summary: 'Create a simple bulleted list.',
                 img: 'https://www.notion.so/images/blocks/bulleted-list.0e87e917.png',
+                style: 'display: list-item; margin-left: 1em; color: rgb(12, 11, 10); margin-left: 40px',
             },
         ];
     }
@@ -54,9 +59,7 @@ let MyMenu = class MyMenu extends LitElement {
       <div class="wrapper">
         <div class="container">
           <div class="header">BASIC BLOCKS</div>
-          ${this.menuItems.map((item) => 
-        // html` <div class="block" @click=${this._onClickMenu(${item.type})}>
-        html ` <div class="block" @click=${this._onClickMenu}>
+          ${this.menuItems.map((item, index) => html ` <div class="block" @click=${() => this._onClickMenu(index)}>
                 <img class="icon" src=${item.img} />
                 <div class="content">
                   <div class="content-type">${item.type}</div>
@@ -67,14 +70,41 @@ let MyMenu = class MyMenu extends LitElement {
       </div>
     `;
     }
-    _onClickMenu(selectedMenu) {
-        console.log('MENU CLICKED!!');
-        const input = document.getElementsByClassName('main-input');
-        input[0].removeAttribute('class');
-        switch (selectedMenu) {
-            case this.menuItems[0].type: {
-                // input[0].setAttribute('class', `${this.}`)  }
-                // 선택한 메뉴 타입별 스타일클래스 적용
+    _onClickMenu(index) {
+        var _a;
+        const mainInput = ((_a = this.parentElement) === null || _a === void 0 ? void 0 : _a.getElementsByClassName('main-input')) || undefined;
+        console.log(mainInput);
+        mainInput[0].innerHTML = '';
+        switch (index) {
+            case 0: {
+                console.log('TEXT CLICKED!!');
+                mainInput[0].setAttribute('placeholder', `${this.menuItems[0].type}`);
+                mainInput[0].setAttribute('style', `${this.menuItems[0].style}`);
+                break;
+            }
+            case 1: {
+                console.log('HEAD ONE CLICKED!!');
+                mainInput[0].setAttribute('placeholder', `${this.menuItems[1].type}`);
+                mainInput[0].setAttribute('style', `${this.menuItems[1].style}`);
+                break;
+            }
+            case 2: {
+                console.log('HEAD TWO CLICKED!!');
+                mainInput[0].setAttribute('placeholder', `${this.menuItems[2].type}`);
+                mainInput[0].setAttribute('style', `${this.menuItems[2].style}`);
+                break;
+            }
+            case 3: {
+                console.log('HEAD THREE CLICKED!!');
+                mainInput[0].setAttribute('placeholder', `${this.menuItems[3].type}`);
+                mainInput[0].setAttribute('style', `${this.menuItems[3].style}`);
+                break;
+            }
+            case 4: {
+                console.log('BULLET LIST CLICKED!!');
+                mainInput[0].setAttribute('placeholder', `${this.menuItems[4].type}`);
+                mainInput[0].setAttribute('style', `${this.menuItems[4].style}`);
+                break;
             }
         }
     }
@@ -134,6 +164,7 @@ MyMenu.styles = [
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        cursor: pointer;
       }
     `,
     css `

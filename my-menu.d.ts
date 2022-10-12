@@ -17,6 +17,7 @@ export declare class MyMenu extends LitElement {
         type: string;
         summary: string;
         img: string;
+        style: string;
     }[];
     render(): import("lit-html").TemplateResult<1>;
     private _onClickMenu;
